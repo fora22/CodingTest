@@ -17,7 +17,7 @@ bool solution(vector<string> phone_book) {
     string findNumber = *(min.first);
     phone_book.erase(phoneBookEraseIterator);
 
-    
+
     for (i = 0; i < phoneBookSize; i++)
     {
         answerInt = phone_book[i].find(findNumber, 0);
@@ -35,7 +35,7 @@ bool solution(vector<string> phone_book) {
 int main(void)
 {
     vector<string> test_1 = { "119", "97674223", "1195524421" };
-    vector<string> test_2= { "123", "456", "789" };
+    vector<string> test_2 = { "123", "456", "789" };
     vector<string> test_3 = { "12", "123", "1235", "567", "88" };
     vector<string>* testPtr = &test_1;
     bool returnAnswer = solution(test_2);

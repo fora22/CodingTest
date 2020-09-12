@@ -18,5 +18,8 @@
     <ClCompile Include="A Player who could not finish.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Phone Number List.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
