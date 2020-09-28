@@ -1,24 +1,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <map>
 using namespace std;
 
 int solution(vector<vector<string>> clothes) {
-    int i;
-    vector<vector<string>>::iterator iterColumn;
-    vector<string>::iterator iterRaw;
+    map<string, string> clothesDictionary;
 
-    for (iterColumn = clothes.begin(); iterColumn != clothes.end(); iterColumn++)
-    {
-        for (iterRaw = (*iterColumn).begin(); iterRaw != (*iterColumn).end(); iterRaw++)
-        {
-            cout << *iterRaw << endl;
-        }
-        
+
+    for (int i = 0; i < clothes.size() ; i++) {
+        clothesDictionary.insert(make_pair(clothes[i][0], clothes[i][1]));
     }
+    map<string, string>::iterator iterMap;
     
 
+    for (iterMap = clothesDictionary.begin(); iterMap != clothesDictionary.end(); iterMap++) {
+        cout << "key : " << iterMap->first << "  value : " << iterMap->second << endl;
+    }
     int answer = 0;
 
     return answer;
