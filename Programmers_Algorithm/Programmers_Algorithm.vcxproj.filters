@@ -21,5 +21,8 @@
     <ClCompile Include="Phone Number List.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Camouflage.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
