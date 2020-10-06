@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++,c
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,c++,c
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,visualstudio,c++,c
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,visualstudio,c++,c
 
 ### C ###
 # Prerequisites
@@ -86,6 +86,7 @@ dkms.conf
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+.ionide
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -438,4 +439,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++,c
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,visualstudio,c++,c
