@@ -1,23 +1,13 @@
 # Coding_Test
-for coding test with c++
+Study Data Structure & Coding Test with mentoring [Jongfeel](https://github.com/jongfeel/Software)
 
-# 조합 구하기
-
- { {"yellow_hat", "headgear"} ,{"blue_sunglasses", "eyewear"},{"green_turban", "headgear"} };
-
-컨테이너(key, value)에서 중복없이 총 조합의 수를 구하는 방식은 다음과 같다
-
-각 key값에 따른 count 수를 세어 size라는 컨테이너에 넣는다(index가 key라고 가정).
-
-size[n(1), n(2), n(3), ... , n(n)]
-
-1개 : n(1) + n(2) + n(3) + ... + n(n)
-
-2개 : n(1) * (n(2) + n(3) + ... n(n)) + n(2) * (n(3) + ... + n(n)) + ... + n(n-1) * n(n)
-
-3개 : (n(1) * n(2)) * (n(3) + n(n)) + (n(2) * n(3)) * (n(4) + ... + n(n)) + (n(n-2) * n(n-1)) * (n(n))
-
-...
-
-n개 : n(1) * n(2) * n(3) * ... * n(n)
-
+# Folder Explain
+주로 쓰는 개발 tool은 Visual Studio Code이지만 debugging이나 Library 추가를 위해 Visual Studio 2019 Community도 사용함.
+- 따라서 *VS* 폴더는 Visual Studio 2019 Community를 사용한 폴더
+- *VS_Code* 폴더는 Visual Studio Code에서 작업한 폴더
+- *Source* 폴더는 이제까지 푼 문제를 모아놓은 폴더
+  - 풀었거나 해결한 문제는 *Source* 폴더에 모아놓을 예정
+  - [Porgrammers](https://programmers.co.kr/learn/challenges), [SWExpertAcademy](https://swexpertacademy.com/main/main.do) 등을 활용할 계획
+  - 완성된 Source를 먼저 보고싶다면 *Source* 폴더로 가는 것을 추천
+- 풀 때 문제마다 폴더를 만들 예정
+- 자료구조 공부는 *VS_Code* 폴더의 *DataStructure*에서 할 예정
