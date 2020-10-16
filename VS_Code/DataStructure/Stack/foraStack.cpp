@@ -65,7 +65,11 @@ int foraStack::outputStack() {
 }
 
 int foraStack::length() {
-    return this->stackUsed;
+    return this->stackSize;
+}
+
+int foraStack::peek() {
+    return this->stackArray[stackUsed];
 }
 
 //REVIEW main함수는 확인용으로 만듬

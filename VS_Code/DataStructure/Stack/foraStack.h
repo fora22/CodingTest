@@ -16,4 +16,5 @@ public:
     void pushStack(int data);
     int outputStack();
     int length();
+    int peek();
 };
