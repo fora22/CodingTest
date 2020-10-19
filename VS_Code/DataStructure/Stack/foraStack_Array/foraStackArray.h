@@ -2,16 +2,16 @@
 
 using namespace std;
 
-class foraStack
+class foraStackArray
 {
 private:
     int stackSize;
     int stackUsed;
 public:
     int* stackArray;
-    foraStack();
-    foraStack(int size);
-    ~foraStack();
+    foraStackArray();
+    foraStackArray(int size);
+    ~foraStackArray();
     int &operator[] (int index);
     void pushStack(int data);
     int outputStack();
