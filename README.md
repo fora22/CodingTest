@@ -1,6 +1,12 @@
 # Coding_Test
 Study Data Structure & Coding Test with mentoring [Jongfeel](https://github.com/jongfeel/Software)
 
+# 목표 설정
+## 정세영
+
+## 팽대원
+- [이것이 취업을 위한 코딩테스트다 with 파이썬](https://github.com/ndb796/python-for-coding-test) 책에 있는 예제 및 실전문제 다 풀기!!
+
 # Folder Explain
 주로 쓰는 개발 tool은 Visual Studio Code이지만 debugging이나 Library 추가를 위해 Visual Studio 2019 Community도 사용함.
 - 따라서 *VS* 폴더는 Visual Studio 2019 Community를 사용한 폴더
