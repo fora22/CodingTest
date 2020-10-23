@@ -1,7 +1,10 @@
 #include "foraStackLinkedList.h"
 
 
-
+foraStackLinkedList::foraStackLinkedList()
+{
+    stackHead = new foraStackLinkedListStructure();
+}
 
 // foraStackLinkedList::~foraStackLinkedList() {
 //     delete[] stackArray;
@@ -10,24 +13,18 @@
 int& foraStackLinkedList::operator[] (int index) 
 {
     foraStackLinkedListStructure* findDataPtr = this->stackHead;
-    int tempStackData;
-    if (index == 0) {
-        tempStackData = findDataPtr->foraStackData;
-    } else
-    {
-        for (int i = 0; i < index; i++) {
-            findDataPtr = findDataPtr->tailNode;
-        }
-        tempStackData = findDataPtr->foraStackData;
+    
+    for (int i = 0; i < index; i++) {
+        findDataPtr = findDataPtr->tailNode;
     }
-
+    int& tempStackData = findDataPtr->foraStackData;
     return tempStackData;
 }
 
 void foraStackLinkedList::pushStack(int data) 
 {
     this->stackHead->foraStackData = data;
-    foraStackLinkedListStructure* stackHead = new foraStackLinkedListStructure;
+    foraStackLinkedListStructure* stackHead = new foraStackLinkedListStructure();
     this->stackHead->tailNode =  stackHead;
 }
 
@@ -36,14 +33,14 @@ void foraStackLinkedList::pushStack(int data)
 int main(void)
 {
     const int s_size = 5;
-    foraStackLinkedList *newStack = new foraStackLinkedList(s_size);
+    foraStackLinkedList *newStack = new foraStackLinkedList;
     for (int i = 0; i < s_size; i++) {
         newStack->pushStack(i);
     }
     // int out = newStack->outputStack();
     int temp;
     for (int i = 0; i < s_size; i++) {
-        temp = newStack[i];
+        temp = (*newStack)[i];
         cout << temp << endl;
     }
     return 0;

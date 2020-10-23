@@ -5,6 +5,6 @@ foraStackLinkedListStructure::foraStackLinkedListStructure(/* args */)
     this->tailNode = NULL;
 }
 
-foraStackLinkedListStructure::~foraStackLinkedListStructure()
-{
-}
+// foraStackLinkedListStructure::~foraStackLinkedListStructure()
+// {
+// }
