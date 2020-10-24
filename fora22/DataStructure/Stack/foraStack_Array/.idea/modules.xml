@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/foraStackLinkedList.iml" filepath="$PROJECT_DIR$/.idea/foraStackLinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/foraStack_Array.iml" filepath="$PROJECT_DIR$/.idea/foraStack_Array.iml" />
     </modules>
   </component>
 </project>
