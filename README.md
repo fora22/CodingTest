@@ -3,7 +3,8 @@ Study Data Structure & Coding Test with mentoring [Jongfeel](https://github.com/
 
 # 목표 설정
 ## 정세영
-
+- 'Java의 정석' 책을 통해 Java 학습(1장 ~ 16장) 및  [이것이 취업을 위한 코딩테스트다 with 파이썬](https://github.com/ndb796/python-for-coding-test) 의 예제를 풀며 코딩 실력 향상
+- Java를 활용하여 교내 소프트웨어 동아리 Eon의 정보 공유 및 질문 페이지 제작 및 관리
 ## 팽대원
 - [이것이 취업을 위한 코딩테스트다 with 파이썬](https://github.com/ndb796/python-for-coding-test) 책에 있는 예제 및 실전문제 다 풀기!!
 
