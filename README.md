@@ -1,5 +1,9 @@
 # Coding_Test
-Study Data Structure & Coding Test with mentoring [Jongfeel](https://github.com/jongfeel/Software)
+Study Data Structure & Coding Test
+
+mentor : [Jongfeel](https://github.com/jongfeel/Software)
+
+mentee : [JSY8860](https://github.com/JSY8869), [fora22](https://github.com/fora22)
 
 # 목표 설정
 ## 정세영
