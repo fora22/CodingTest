@@ -8,7 +8,7 @@ mentee : [JSY8860](https://github.com/JSY8869), [fora22](https://github.com/fora
 # 목표 설정
 ## 정세영
 - 'Java의 정석' 책을 통해 Java 학습(1장 ~ 16장) 및  [이것이 취업을 위한 코딩테스트다 with 파이썬](https://github.com/ndb796/python-for-coding-test) 의 예제를 풀며 코딩 실력 향상
-- Java를 활용하여 교내 소프트웨어 동아리 Eon의 정보 공유 및 질문 페이지 제작 및 관리
+- Java를 활용하여 교내 소프트웨어 동아리 Eon의 정보 공유 및 질문 페이지의 서버 제작 및 관리
 ## 팽대원
 - [이것이 취업을 위한 코딩테스트다 with 파이썬](https://github.com/ndb796/python-for-coding-test) 책에 있는 예제 및 실전문제 다 풀기
 - 알고리즘 [기초](https://librewiki.net/wiki/%EC%8B%9C%EB%A6%AC%EC%A6%88:%EC%88%98%ED%95%99%EC%9D%B8%EB%93%AF_%EA%B3%BC%ED%95%99%EC%95%84%EB%8B%8C_%EA%B3%B5%ED%95%99%EA%B0%99%EC%9D%80_%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B3%BC%ED%95%99/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98_%EA%B8%B0%EC%B4%88), [중급[?]](https://librewiki.net/wiki/%EC%8B%9C%EB%A6%AC%EC%A6%88:%EC%88%98%ED%95%99%EC%9D%B8%EB%93%AF_%EA%B3%BC%ED%95%99%EC%95%84%EB%8B%8C_%EA%B3%B5%ED%95%99%EA%B0%99%EC%9D%80_%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B3%BC%ED%95%99/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98_%EC%A4%91%EA%B8%89)을 구현해보기
