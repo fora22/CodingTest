@@ -5,8 +5,10 @@
 #ifndef FORASTACK_LINKED_LIST_FORASTACKLINKEDLIST_H
 #define FORASTACK_LINKED_LIST_FORASTACKLINKEDLIST_H
 
+
 //#include "foraStackLinkedListStructure.h"  DELETE
 #include <iostream>
+
 using namespace std;
 
 class foraStackLinkedList {

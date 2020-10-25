@@ -67,4 +67,3 @@ int foraStackLinkedList::peek() {
 
     return findDataPtr->foraStackData;
 }
-
