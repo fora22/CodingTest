@@ -25,5 +25,3 @@ while True:
         break
     except:
         print("0보다 큰 10의 배수를 입력하세요.")
-
-
