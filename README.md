@@ -15,6 +15,12 @@ mentee : [JSY8860](https://github.com/JSY8869), [fora22](https://github.com/fora
 
 # Folder Explain
 ## 정세영
+주로 쓰는 개발 도구는 Visual Studio Code이며, Java의 경우 Eclipse도 사용한다.
+- 코딩 테스트는 *JSY8869* 폴더에 *CHAPTER*별로 폴더로 구분한다.
+- 매 *CHAPTER* 폴더 내에서는 *Develop* 폴더에서 작업하며, 해결한 문제는 *Completion* 폴더에 저장한다.
+- 현재는 [이것이 취업을 위한 코딩테스트다 with 파이썬](https://github.com/ndb796/python-for-coding-test)을 푸는 중이다.
+- *Java의 정석* 책을 통해 Java언어를 학습 중이다. 
+- *이것이 취업을 위한 코딩테스트다 with 파이썬* 의 문제는 최대한 Java로 해결 할 것이다.
 ## 팽대원
 주로 쓰는 개발 tool은 Visual Studio Code이지만 debugging이나 Library 추가를 위해 ~~Visual Studio 2019 Community도 사용함~~ 현재는 JetBrain의 Clion을 사용하는 중
 - 코딩테스트는 *CodingTest* 폴더에서 작업한 뒤, 완료된 문제는 *Source* 폴더로 이동
