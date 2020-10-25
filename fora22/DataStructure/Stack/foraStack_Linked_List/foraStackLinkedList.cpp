@@ -4,29 +4,67 @@
 
 #include "foraStackLinkedList.h"
 
-foraStackLinkedList::foraStackLinkedList()
-{
-    stackHead = new foraStackLinkedListStructure();
+foraStackLinkedList::foraStackLinkedList() {
+    foraStackTail = nullptr;
+    foraStackUsed = 0;
 }
 
-// foraStackLinkedList::~foraStackLinkedList() {
-//     delete[] stackArray;
-// }
+foraStackLinkedList::~foraStackLinkedList() {
+    foraStackLinkedList *findStackPtr = this;
+    foraStackLinkedList *forDelStackPtr;
+    for (int i = 0; i < (foraStackUsed-1); i++) {
+        forDelStackPtr = findStackPtr->foraStackTail;
+        delete findStackPtr;
+        findStackPtr = forDelStackPtr;
+    }
+}
 
-int& foraStackLinkedList::operator[] (int index)
-{
-    foraStackLinkedListStructure* findDataPtr = this->stackHead;
+int &foraStackLinkedList::operator[](int index) {
+    foraStackLinkedList *findDataPtr = this;
 
     for (int i = 0; i < index; i++) {
-        findDataPtr = findDataPtr->tailNode;
+        findDataPtr = findDataPtr->foraStackTail;
     }
-    int& tempStackData = findDataPtr->foraStackData;
-    return tempStackData;
+
+    return findDataPtr->foraStackData;
 }
 
-void foraStackLinkedList::pushStack(int data)
-{
-    this->stackHead->foraStackData = data;
-    foraStackLinkedListStructure* stackHead = new foraStackLinkedListStructure();
-    this->stackHead->tailNode =  stackHead;
+void foraStackLinkedList::pushStack(int data) {
+    foraStackLinkedList *findStackPtr = this;
+    for (int i = 0; i < foraStackUsed; i++) {
+        findStackPtr = findStackPtr->foraStackTail;
+    }
+    findStackPtr->foraStackData = data;
+    foraStackLinkedList *nextStack = new foraStackLinkedList;
+    nextStack->foraStackTail = findStackPtr->foraStackTail;
+    findStackPtr->foraStackTail = nextStack;
+    foraStackUsed++;
 }
+
+int foraStackLinkedList::outputStack() {
+    foraStackLinkedList *findStackPtr = this;
+    for (int i = 0; i < (foraStackUsed-2); i++) {
+        findStackPtr = findStackPtr->foraStackTail;
+    }
+    int output = findStackPtr->foraStackTail->foraStackData;
+    delete findStackPtr->foraStackTail;
+    findStackPtr->foraStackTail = nullptr;
+    foraStackUsed--;
+
+    return output;
+}
+
+int foraStackLinkedList::length() {
+    return foraStackUsed;
+}
+
+int foraStackLinkedList::peek() {
+    foraStackLinkedList *findDataPtr = this;
+
+    for (int i = 0; i < (foraStackUsed-1); i++) {
+        findDataPtr = findDataPtr->foraStackTail;
+    }
+
+    return findDataPtr->foraStackData;
+}
+
