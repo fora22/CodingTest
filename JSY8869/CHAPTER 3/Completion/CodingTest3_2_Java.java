@@ -29,6 +29,6 @@ public class CodingTest3_2_Java {
                 break;
             }
         }
-        System.out.printf("%d", Result);
+        System.out.printf("%d", Result); // 결과 출력
     }   
 }
