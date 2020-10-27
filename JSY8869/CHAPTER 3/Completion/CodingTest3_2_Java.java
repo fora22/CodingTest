@@ -1,4 +1,3 @@
-package Develop;
 import java.util.*;
 public class CodingTest3_2_Java {
     public static void main(String[] args){
