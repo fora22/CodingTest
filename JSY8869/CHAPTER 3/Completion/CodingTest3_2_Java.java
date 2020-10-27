@@ -11,22 +11,13 @@ public class CodingTest3_2_Java {
             N_List[i] = scanner.nextInt();
         }
         Arrays.sort(N_List); // 오름차순 정렬
-        while(true){
+        while(M != 0){
             for(int j = 0; j < K; j++){
                 Result += N_List[N-1];
                 M -= 1;
-                if (M == 0){
-                    break;
-                }
-            }
-            if (M == 0){
-                break;
             }
             Result += N_List[N-2];
             M -= 1;
-            if (M == 0){
-                break;
-            }
         }
         System.out.printf("%d", Result); // 결과 출력
     }   
