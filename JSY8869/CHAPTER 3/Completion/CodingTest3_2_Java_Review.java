@@ -10,6 +10,6 @@ public class CodingTest3_2_Java_Review{
             N_List[i] = scanner.nextInt();
         }
         Arrays.sort(N_List); // 오름차순 정렬
-        System.out.println((N_List[N-1] * (M - (M % K)) + (N_List[N-2] * (M % K))));
+        System.out.println((N_List[N-1] * (M - (M / K)) + (N_List[N-2] * (M / K))));
     }
 }
