@@ -16,7 +16,9 @@ private:
 //    foraStackLinkedListStructure* stackHead;
     int foraStackData;
     int foraStackUsed;
+    foraStackLinkedList* foraStackHead;
     foraStackLinkedList* foraStackTail;
+    foraStackLinkedList* foraStackEndTail;
 public:
     foraStackLinkedList();
     ~foraStackLinkedList();

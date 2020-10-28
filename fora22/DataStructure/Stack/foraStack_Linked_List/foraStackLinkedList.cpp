@@ -5,7 +5,9 @@
 #include "foraStackLinkedList.h"
 
 foraStackLinkedList::foraStackLinkedList() {
+    foraStackHead = nullptr;
     foraStackTail = nullptr;
+    foraStackEndTail = this;
     foraStackUsed = 0;
 }
 
@@ -30,25 +32,22 @@ int &foraStackLinkedList::operator[](int index) {
 }
 
 void foraStackLinkedList::pushStack(int data) {
-    foraStackLinkedList *findStackPtr = this;
-    for (int i = 0; i < foraStackUsed; i++) {
-        findStackPtr = findStackPtr->foraStackTail;
-    }
-    findStackPtr->foraStackData = data;
+    // REVIEW - Stack Linked List는 끝에 data가 비어있는 list가 있음, foraStakcEndTail은 끝에 비어있는 list를 가리키는 포인터 변수
     foraStackLinkedList *nextStack = new foraStackLinkedList;
-    nextStack->foraStackTail = findStackPtr->foraStackTail;
-    findStackPtr->foraStackTail = nextStack;
+    foraStackEndTail->foraStackData = data;
+    foraStackEndTail->foraStackTail = nextStack;
+    nextStack->foraStackTail = nullptr;
+    nextStack->foraStackHead = foraStackEndTail;
+    foraStackEndTail = nextStack;
     foraStackUsed++;
 }
 
 int foraStackLinkedList::outputStack() {
-    foraStackLinkedList *findStackPtr = this;
-    for (int i = 0; i < (foraStackUsed-2); i++) {
-        findStackPtr = findStackPtr->foraStackTail;
-    }
-    int output = findStackPtr->foraStackTail->foraStackData;
-    delete findStackPtr->foraStackTail;
-    findStackPtr->foraStackTail = nullptr;
+    foraStackLinkedList *deleteStackPtr = foraStackEndTail;
+    int output = foraStackEndTail->foraStackHead->foraStackData;
+    foraStackEndTail = foraStackEndTail->foraStackHead;
+    delete deleteStackPtr;
+    foraStackEndTail->foraStackTail = nullptr;
     foraStackUsed--;
 
     return output;
@@ -59,11 +58,5 @@ int foraStackLinkedList::length() {
 }
 
 int foraStackLinkedList::peek() {
-    foraStackLinkedList *findDataPtr = this;
-
-    for (int i = 0; i < (foraStackUsed-1); i++) {
-        findDataPtr = findDataPtr->foraStackTail;
-    }
-
-    return findDataPtr->foraStackData;
+    return foraStackEndTail->foraStackHead->foraStackData;
 }
