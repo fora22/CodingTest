@@ -18,7 +18,7 @@ int makeBigNumber(vector<int> numbers, int M, int K) {
 }
 
 int main() {
-    // REVIEW - NMK[0]은 N, NMK[1]은 M, NMK[2]는 K
+//    NMK[0]은 N, NMK[1]은 M, NMK[2]는 K
     vector<int> NMK = {5, 7, 2};        // REVIEW - N, M, K
     vector<int> N_Number = {3,4,3,4,3};     // REVIEW - N개의 자연수
     vector<int>::iterator iterNumber;
