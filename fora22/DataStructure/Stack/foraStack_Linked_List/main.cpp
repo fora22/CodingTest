@@ -6,11 +6,13 @@ int main() {
     for (int i = 0; i < s_size; i++) {
         newStack->pushStack(i);
     }
-    // int out = newStack->outputStack();
-    int temp;
+
     for (int i = 0; i < s_size; i++) {
-        temp = (*newStack)[i];
-        cout << temp << endl;
+        cout << (*newStack)[i]  << endl;
     }
+    cout << "길이 : " << newStack->length() << " peek : " << newStack->peek() << endl;
+    int out = newStack->outputStack();
+    cout << "빠져나온 값 : " << out << " peek : " << newStack->peek() << endl;
+
     return 0;
 }
