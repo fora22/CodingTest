@@ -1,23 +1,27 @@
-#include "foraStack.h"
+//
+// Created by fora2 on 2020-10-24.
+//
 
-foraStack::foraStack() : stackSize(1), stackUsed(0) {
+#include "foraStackArray.h"
+
+foraStackArray::foraStackArray() : stackSize(1), stackUsed(0) {
     stackArray = new int[stackSize];
 }
 
-foraStack::foraStack(int size)  : stackSize(size), stackUsed(0) {
+foraStackArray::foraStackArray(int size)  : stackSize(size), stackUsed(0) {
     stackArray = new int[stackSize];
 }
 
-foraStack::~foraStack() {
+foraStackArray::~foraStackArray() {
     delete[] stackArray;
 }
 
-int& foraStack::operator[] (int index) {
+int& foraStackArray::operator[] (int index) {
     //REVIEW - operator를 사용하면 array[5] 형식으로 배열 인덱스로 데이터를 접근할 수 있다.
     return this->stackArray[index];
 }
 
-void foraStack::pushStack(int data) {
+void foraStackArray::pushStack(int data) {
     if (this->stackUsed < this->stackSize) {
         //REVIEW - 지금 사용하는공간이 크기보다 작으면 초기화 시킴
         this->stackArray[this->stackUsed] = data;
@@ -39,11 +43,11 @@ void foraStack::pushStack(int data) {
         delete[] temp;
         this->stackArray[this->stackUsed] = data;
     }
-    
+
     this->stackUsed++;
 }
 
-int foraStack::outputStack() {
+int foraStackArray::outputStack() {
     if (this->stackUsed == 0) {
         return -1;
     }
@@ -53,38 +57,21 @@ int foraStack::outputStack() {
     for (int i = 0; i < this->stackUsed; i++) {
         temp[i] = this->stackArray[i];
     }
-    delete[] this->stackArray;
-    
+    delete [] this->stackArray;
+
     this->stackArray = new int[this->stackUsed];
     for(int i = 0; i < this->stackUsed; i++) {
         this->stackArray[i] =  temp[i];
     }
-    delete[] temp;
+    delete [] temp;
 
     return output;
 }
 
-int foraStack::length() {
+int foraStackArray::length() {
     return this->stackSize;
 }
 
-int foraStack::peek() {
+int foraStackArray::peek() {
     return this->stackArray[stackUsed];
-}
-
-//REVIEW main함수는 확인용으로 만듬
-int main(void)
-{
-    const int s_size = 10;
-    foraStack *newStack = new foraStack(s_size);
-    for (int i = 0; i < s_size; i++) {
-        newStack->pushStack(i);
-    }
-    int out = newStack->outputStack();
-
-    for (int i = 0; i < s_size; i++) {
-        cout << newStack->stackArray[i] << endl;
-    }
-    cout << out << endl;
-    return 0;
 }
