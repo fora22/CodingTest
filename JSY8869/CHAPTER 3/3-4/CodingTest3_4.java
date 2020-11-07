@@ -3,7 +3,10 @@ import java.util.*;
 public class CodingTest3_4 {
     public static void main(String[] args){
         Until_one temp = new Until_one();
-        temp.select();
+        while(temp.N != 1){
+            temp.select();
+        }
+        System.out.println(temp.count);
     }
 }
 
@@ -13,27 +16,13 @@ class Until_one{
     int K = random.nextInt(N-1) + 2;
     long count = 0;
     void select(){
-        System.out.printf("N = %d K = %d", N, K);
-        if (N == 1){
-            System.out.println(count);
+        if (N % K == 0){
+            N = N / K;
+            count += 1;
         }
         else{
-            if (N % K == 0){
-                select_two();
-            }
-            else{
-                select_one();
-            }
+            N -= 1;
+            count +=1;
         }
-    }
-    void select_one(){
-        N -= 1;
-        count +=1;
-        select();
-    }
-    void select_two(){
-        N = N / K;
-        count += 1;
-        select();
     }
 }
