@@ -16,15 +16,15 @@ private:
 //    foraStackLinkedListStructure* stackHead;
     int foraStackData;
     int foraStackUsed;
-    foraStackLinkedList* foraStackHead;
-    foraStackLinkedList* foraStackTail;
-    foraStackLinkedList* foraStackEndTail;
+    foraStackLinkedList* stackHead;
+    foraStackLinkedList* stackTail;
+    foraStackLinkedList* lastListTail;
 public:
     foraStackLinkedList();
     ~foraStackLinkedList();
     int& operator[] (int index);
-    void pushStack(int data);
-    int outputStack();
+    void push(int data);
+    int output();
     int length();
     int peek();
 };
