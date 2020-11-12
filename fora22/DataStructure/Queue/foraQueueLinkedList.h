@@ -13,7 +13,6 @@ class foraQueueLinkedList {
 private:
     int data;
     int used;
-    foraQueueLinkedList* head;
     foraQueueLinkedList* tail;
     foraQueueLinkedList* lastListPtr;
     foraQueueLinkedList* firstListPtr;

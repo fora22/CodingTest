@@ -6,7 +6,6 @@
 
 foraQueueLinkedList::foraQueueLinkedList() {
     foraQueueLinkedList *nextQueue = new foraQueueLinkedList;
-    head = nullptr;
     tail = nextQueue;
     lastListPtr = nextQueue;
     firstListPtr = nextQueue;
@@ -39,7 +38,6 @@ void foraQueueLinkedList::push(int data) {
     lastListPtr->data = data;
     lastListPtr->tail = nextQueue;
     nextQueue->tail = nullptr;
-    nextQueue->head = lastListPtr;
     lastListPtr = nextQueue;
     used++;
 }
