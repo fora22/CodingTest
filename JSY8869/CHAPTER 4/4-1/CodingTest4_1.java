@@ -1,52 +1,26 @@
 import java.util.*;
+
 class CodingTest4_1{
     public static void main(String[] args){
-        UDLR temp = new UDLR();
-        temp.make_plan(); // 랜덤으로 계획서 생성
-        for(int j = 0; j < temp.Number_0f_Moves; j++){
-            temp.Where_To_Go(j); // 계획서에 따라 차례대로 이동
-        }
-        System.out.printf("%d %d", temp.Result[0], temp.Result[1]);
+        Time temp = new Time();
     }
 }
 
-class UDLR{
-    Random random = new Random();
-    int[] Result = {1,1};
-    int N = random.nextInt(100)+1;
-    int Number_0f_Moves = random.nextInt(100)+1;
-    char[] plan = new char[Number_0f_Moves];
-
-    void make_plan(){
-        for (int i = 0; i < Number_0f_Moves; i++)
-            plan[i] = "UDLR".charAt(random.nextInt("UDLR".length()));
-    }
-    void Where_To_Go(int j){
-        switch(plan[j]){
-            case 'U':{
-                if (Result[0] != 1){
-                    Result[0]--;
-                }
-                break;
-            }
-            case 'D':{
-                if (Result[0] != N){
-                    Result[0]++;
-                }
-                break;
-            }
-            case 'L':{
-                if (Result[1] != 1){
-                    Result[1]--;
-                }
-                break;
-            }
-            case 'R':{
-                if (Result[1] != N){
-                    Result[1]++;
-                }
-                break;
-            }
-        }
-    }
+class Time{
+    Time(){
+        Random random = new Random();
+        int N = random.nextInt(24);
+        int count = 0;
+        String three = "3";
+        for(int i = 0; i < N; i++)
+            for(int j = 0; j < 60; j++)
+                for(int k = 0; k < 60; k++){
+                    String itemp = Integer.toString(i);
+                    String jtemp = Integer.toString(j);
+                    String ktemp = Integer.toString(k);
+                    if(itemp.equals(three) || jtemp.equals(three) || ktemp.equals(three))
+                        count += count;
+                    }
+        System.out.println(count);
+    }       
 }
