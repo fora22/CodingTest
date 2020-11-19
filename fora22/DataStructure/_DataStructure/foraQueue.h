@@ -15,6 +15,7 @@ private:
     foraNode* firstListPtr;
 public:
     foraQueue();
+    foraQueue(int data);
     ~foraQueue();
     int& operator[] (int index);
     void enqueue(int data);

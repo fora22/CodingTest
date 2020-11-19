@@ -6,11 +6,26 @@
 
 foraQueue::foraQueue() {
     foraNode *newNode = new foraNode();
-    newNode->tail = nullptr;
     firstListPtr = newNode;
     lastListPtr = newNode;
     used = 0;
 }
+
+foraQueue::foraQueue(int data) {
+    if (data > 0) {
+        for (int i = 0; i < data; i++) {
+            foraNode *newNode = new foraNode();
+            lastListPtr->tail = newNode;
+            lastListPtr = newNode;
+            lastListPtr->data = i;
+            used++;
+        }
+    } else {
+        cout << "Index out of range" << endl;
+    }
+
+}
+
 
 foraQueue::~foraQueue() {
     foraNode *findQueuePtr = firstListPtr;
@@ -20,6 +35,7 @@ foraQueue::~foraQueue() {
         delete findQueuePtr;
         findQueuePtr = forDelQueuePtr;
     }
+
     delete firstListPtr;
 }
 
@@ -47,6 +63,7 @@ void foraQueue::enqueue(int data) {
 }
 
 int foraQueue::dequeue() {
+    if (used > 0){
     int dequeue = firstListPtr->data;
     foraNode *delQueuePtr = firstListPtr->tail;
     firstListPtr->tail = delQueuePtr->tail;
@@ -54,6 +71,11 @@ int foraQueue::dequeue() {
     used--;
 
     return dequeue;
+
+    } else {
+        cout << "There is no data" << endl;
+        return -1;
+    }
 }
 
 int foraQueue::length() {
