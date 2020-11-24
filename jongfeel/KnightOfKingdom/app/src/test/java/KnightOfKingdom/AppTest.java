@@ -5,10 +5,27 @@ package KnightOfKingdom;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsProvider;
+import java.util.stream.Stream;
 
 class AppTest {
-    @Test void appHasAGreeting() {
+    @ParameterizedTest
+    @MethodSource("provideSquareNameForKnightMove") // needs to match an existing method.
+    void appKnightMoveCase(String squareName, int numberOfCase) {
         App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+        assertEquals(classUnderTest.moveTo(squareName), numberOfCase);
+    }
+
+    private static Stream<Arguments> provideSquareNameForKnightMove() { // argument source method
+        return Stream.of(
+          Arguments.of("a1", 2),
+          Arguments.of("h2", 3),
+          Arguments.of("b7", 4),
+          Arguments.of("g3", 6),
+          Arguments.of("e5", 8)
+        );
     }
 }

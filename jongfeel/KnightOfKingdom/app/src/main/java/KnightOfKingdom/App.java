@@ -3,12 +3,42 @@
  */
 package KnightOfKingdom;
 
+import java.util.HashMap;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    private HashMap<String, Integer> knightMap = new HashMap<>();
+    // row1, 8 array
+    private int[] values_a_or_h = {2, 3, 4, 4, 4, 4, 3, 2};
+    private int[] values_b_or_g = {3, 4, 6, 6, 6, 6, 4, 3};
+    private int[] values_c_to_f = {4, 6, 8, 8, 8, 8, 6, 4};
+
+    public App() {
+        // Initialize knightMap values
+        // ASCII 97 is 'a', 104 is 'h'
+        for (int col = 97; col < 105; col++) {
+            for (int row = 0; row < 8; row++) {
+                char colName = (char)col;
+                String squareName = String.valueOf(colName) + (row + 1);
+                //System.out.println(squareName);
+
+                int numberOfCase = 0;
+                if (colName == 'a' || colName == 'h') {
+                    numberOfCase = values_a_or_h[row];
+                } else if (colName == 'b' || colName == 'g') {
+                    numberOfCase = values_b_or_g[row];
+                } else {
+                    numberOfCase = values_c_to_f[row];
+                }
+                knightMap.put(squareName, numberOfCase);
+            }
+        }
+    }
+
+    public int moveTo(String squareName) {
+        return knightMap.get(squareName);
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println(new App().moveTo("a1"));
     }
 }
