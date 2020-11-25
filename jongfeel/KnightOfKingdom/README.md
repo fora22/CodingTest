@@ -34,7 +34,7 @@ $ gradle test
 
 아래 그림과 같이 각 체스판 위치마다 나이트가 이동할 수 있는 경우의 수를 구할 수 있고 a1 - d4 까지만 봐도 좌우 및 상하 대칭값이라는 걸 알 수 있다.
 
-![chessboard](/images/chessboard_knightmovecase.jpg)
+![chessboard](images/chessboard_knightmovecase.jpg)
 
 그러므로 칸의 값을 입력받지 않고 미리 나이트 이동 경우의 수가 담긴 64개의 mapping된 값만 가지고 있다면 계산할 필요가 없다는 결론에 도달할 수 있다.
 
@@ -107,4 +107,4 @@ public int moveTo(String squareName) {
 
 아래와 같이 5개의 test 케이스가 성공한 걸 확인할 수 있다.
 
-![testcase_result](/images/testcase_result.jpg)
+![testcase_result](images/testcase_result.jpg)
