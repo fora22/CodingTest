@@ -5,7 +5,7 @@
 3이 하나라도 포함되는 모든 경우의 수를 구하는 문제인데, 바로 3 6 9 게임이 떠올랐다.
 
  시:분:초 이고 시각이 N으로 입력받기 때문에 분과 초의 경우의 수 곱하기 N의 경우의 수를 해주면 구할 수 있다.
- 
+
  ## 3을 세기
  0에서 59 사이에 3이들어가는 수는 다음과 같다.
 
@@ -31,26 +31,56 @@
 - 13
 - 23 
   
+
 따라서 if문 으로 구현하려 한다.
 ```cpp
 #include <iostream>
+#include <fstream>
+#include <string>;
 #define THREEON 1575
 #define THREEOFF 3600
 
 using namespace std;
 
-result = 0;
-threeCount = 0;
+int main(void) {
+	ifstream readFile("input.txt");
+	string strN;
+	int N;
+	int result = 0;
+	int threecount = 0;
 
-if (N > = 23) {
-    threeCount = 3;
-} else if (N >= 13) {
-    threeCount = 2;
-} else if (N >= 3) {
-    threeCount = 1;
-} else {
-    threeCount = 0;
+	if (readFile.is_open())
+	{
+	getline(readFile, strN);
+	N = stoi(strN);
+
+	if (N >= 23)
+	{
+		threecount = 3;
+	}
+	else if (N >= 13)
+	{
+		threecount = 2;
+	}
+	else if (N >= 3)
+	{
+		threecount = 1;
+	}
+	else
+	{
+		threecount = 0;
+	}
+
+	result = ((N - threecount + 1) * THREEON) + (threecount * THREEOFF);	// + 1은 0일 때 경우의 수를 추가함
+	cout << result << endl;
+	}
+	else
+	{
+		cout << "파일 열기를 실패했습니다." << endl;
+	}
+	
+	readFile.close();
+
+	return 0;
 }
-
-result = ((N - threeCount) * THREEON) + (threeCount * THREEOFF);
 ```
