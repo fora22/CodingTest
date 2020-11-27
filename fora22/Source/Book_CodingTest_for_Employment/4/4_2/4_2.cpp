@@ -34,12 +34,12 @@ int main(void) {
 			threecount = 0;
 		}
 
-		result = ((N - threecount + 1) * THREEON) + (threecount * THREEOFF);	// + 1Àº 0ÀÏ ¶§ °æ¿ìÀÇ ¼ö¸¦ Ãß°¡ÇÔ
+		result = ((N - threecount + 1) * THREEON) + (threecount * THREEOFF);	// + 1ì€ 0ì¼ ë•Œ ê²½ìš°ì˜ ìˆ˜ë¥¼ ì¶”ê°€í•¨
 		cout << result << endl;
 	}
 	else
 	{
-		cout << "ÆÄÀÏ ¿­±â¸¦ ½ÇÆĞÇß½À´Ï´Ù." << endl;
+		cout << "íŒŒì¼ ì—´ê¸°ë¥¼ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤." << endl;
 	}
 	
 	readFile.close();
