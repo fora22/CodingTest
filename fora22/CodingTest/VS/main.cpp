@@ -5,7 +5,6 @@
 #define THREEOFF 3600
 
 using namespace std;
-
 int main(void) {
 	ifstream readFile("input.txt");
 	string strN;
@@ -36,7 +35,7 @@ int main(void) {
 	}
 
 	result = ((N - threecount + 1) * THREEON) + (threecount * THREEOFF);	// + 1은 0일 때 경우의 수를 추가함
-	cout << "ㅁㅁ" << result << endl;
+	cout << result << endl;
 	}
 	else
 	{
