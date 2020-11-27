@@ -10,10 +10,13 @@ int main(void) {
 	ifstream readFile("input.txt");
 	string strN;
 	int N;
-	getline(readFile, strN);
-	N = stoi(strN);
 	int result = 0;
 	int threecount = 0;
+
+	if (readFile.is_open())
+	{
+	getline(readFile, strN);
+	N = stoi(strN);
 
 	if (N >= 23)
 	{
@@ -33,7 +36,14 @@ int main(void) {
 	}
 
 	result = ((N - threecount + 1) * THREEON) + (threecount * THREEOFF);	// + 1은 0일 때 경우의 수를 추가함
-	cout << result << endl;
+	cout << "ㅁㅁ" << result << endl;
+	}
+	else
+	{
+		cout << "파일 열기를 실패했습니다." << endl;
+	}
 	
+	readFile.close();
+
 	return 0;
 }
