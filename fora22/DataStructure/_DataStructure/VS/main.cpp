@@ -1,8 +1,16 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-int main(void) {
+int BinarySearch(int a);
 
+int main(void) {
+	
 	return 0;
+}
+
+int BinarySearch(int a) {
+
+	return a;
 }
