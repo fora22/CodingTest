@@ -18,7 +18,7 @@ int main(void) {
 }
 
 int BinarySearch(vector<int> inputArray, const int arraySize, const int findData) {
-
+	// argument (vector, vector 크기, 찾는 데이터)
 	int middleIndex;
 	int startIndex = 0;
 	int endIndex = arraySize - 1;
