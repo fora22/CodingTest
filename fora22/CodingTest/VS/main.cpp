@@ -6,7 +6,7 @@
 using namespace std;
 
 int solve(string position);
-bool problemInit(vector<vector<int>>* mapPtr, vector<pair<int, int>>* movePtr, map<string, int>* mapColumnPtr);
+bool problemInit(vector<pair<int, int>> *movePtr, map<string, int> *mapColumnPtr);
 int checkNumberOfCases(pair<int, int>* move__, int x, int y);
 
 int main(void) {
@@ -17,14 +17,13 @@ int main(void) {
 }
 
 int solve(string position) {
-	vector<vector<int>> chessMap(8, vector<int>(8, 0));
 	vector<pair<int, int>> move;
 	map<string,int> mapColumn;
 	vector<pair<int, int>>::iterator iterMove;
-	int numberOfCases = 0;
+	int numberOfCases = 0;	// result
 
-	if (!problemInit(&chessMap, &move, &mapColumn)) {
-		return -1;
+	if (!problemInit(&move, &mapColumn)) {
+		return -1;		// Initalize
 	}
 	
 	for (iterMove = move.begin(); iterMove != move.end(); iterMove++) {
@@ -48,7 +47,7 @@ int checkNumberOfCases(pair<int, int> *move__, int x, int y) {
 	}
 }
 
-bool problemInit(vector<vector<int>> *mapPtr, vector<pair<int, int>> *movePtr, map<string, int> *mapColumnPtr) {
+bool problemInit(vector<pair<int, int>> *movePtr, map<string, int> *mapColumnPtr) {
 	try
 	{
 		// first number of pair is x_axis, second number of pair is y_axis.
@@ -60,12 +59,6 @@ bool problemInit(vector<vector<int>> *mapPtr, vector<pair<int, int>> *movePtr, m
 		(*movePtr).push_back(make_pair(1, -2));	// go up and turn left
 		(*movePtr).push_back(make_pair(-1, 2));	// go down and turn left
 		(*movePtr).push_back(make_pair(-1, -2));	// go down and turn right
-
-		for (int i = 0; i < (*mapPtr).size(); i++) {
-			for (int j = 0; j < 8; j++) {
-				(*mapPtr)[i][j] = j + 1;
-			}
-		}
 
 		(*mapColumnPtr).insert(make_pair("a", 1));
 		(*mapColumnPtr).insert(make_pair("b", 2));
