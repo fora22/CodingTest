@@ -10,10 +10,11 @@ int factorial(int n) {
 		return n * factorial(n - 1);
 	}
 	else {
-		cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << endl;
+		cout << "ìž˜ëª»ëœ ìž…ë ¥ìž…ë‹ˆë‹¤." << endl;
 		return -1;
 	}
 }
+
 int fibonacci(int n) {
 	if ((n == 0)||(n == 1)) {
 		return n;
@@ -22,18 +23,18 @@ int fibonacci(int n) {
 		return fibonacci(n - 1) + fibonacci(n - 2);
 	}
 	else {
-		cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << endl;
+		cout << "ìž˜ëª»ëœ ìž…ë ¥ìž…ë‹ˆë‹¤." << endl;
 		return -1;
 	}
 }
 
 int main(void) {
 	int factoNumber, fiboNumber = 0;
-	cout << "¸î ÆÑÅä¸®¾óÀ» ±¸ÇÏ°í ½ÍÀ¸½Å°¡¿ä : ";
+	cout << "ëª‡ íŒ©í† ë¦¬ì–¼ì„ êµ¬í•˜ê³  ì‹¶ìœ¼ì‹ ê°€ìš” : ";
 	cin >> factoNumber;
 	cout << factorial(factoNumber) << endl;
 	
-	cout << "¸î ¹øÂ° ÇÇº¸³ªÄ¡ ¼ö¿­À» ±¸ÇÏ°í ½ÍÀ¸½Å°¡¿ä : ";
+	cout << "ëª‡ ë²ˆì§¸ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ì„ êµ¬í•˜ê³  ì‹¶ìœ¼ì‹ ê°€ìš” : ";
 	cin >> fiboNumber;
 	cout << fibonacci(fiboNumber) << endl;
 
