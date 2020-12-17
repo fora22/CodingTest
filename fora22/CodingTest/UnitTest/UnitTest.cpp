@@ -12,10 +12,11 @@ namespace UnitTest
 	TEST_CLASS(UnitTest)
 	{
 	public:
-		ifstream readfile("input.txt");
 
 		TEST_METHOD(TestMethod1)
 		{
+			ifstream readfile("input.txt");
+			
 			Assert::AreEqual(solve(&readfile), 3);
 		}
 		//TEST_METHOD(TestMethod2)
@@ -35,4 +36,5 @@ namespace UnitTest
 		//	Assert::AreEqual(solve("e5"), 8);
 		//}
 	};
+
 }
