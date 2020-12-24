@@ -41,7 +41,7 @@ int main(void)
 	const int randNumberLength = 100;
 	vector<int> randArray = getRandomArray(randNumberLength);
 
-	vector<int>::iterator min = min_element(randArray.begin(), randArray.end());
+	vector<int>::iterator min = min_element(randArray.begin(), randArray.end());    // random array
 
 	int minIndex;
 	int temp = 0;
