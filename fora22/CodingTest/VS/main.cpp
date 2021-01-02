@@ -7,7 +7,7 @@
 using namespace std;
 
 bool compare(pair<string, int> a, pair<string, int> b) {
-	if (a.second > b.second) {
+	if (a.second < b.second) { // If left bigger than right, it is ascending. If right bigger than left, it is descending.
 		return true;
 	} else {
 		return false;
@@ -50,7 +50,7 @@ vector<pair<string, int>> solve(ifstream* readFile) {
 		delete dataStrPtr;
 	}
 
-	sort(result.begin(), result.end(), compare);		// STL sort is composed by Quick Sort. If you want sort descending, add `greater<int>()` at last parameter.
+	sort(result.begin(), result.end(), compare);	// STL sort is composed by Quick Sort. If you want sort descending, add `greater<int>()` at last parameter.
 
 	return result;
 }
