@@ -27,7 +27,7 @@ int BinarySearch(vector<int> inputArray, const int arraySize, const int findData
 	{
 		middleIndex = (startIndex + endIndex) / 2;
 		if (inputArray[middleIndex] == findData) {
-			return middleIndex + 1;
+			return middleIndex; // return index
 		}
 		
 		if (inputArray[middleIndex] < findData) {
