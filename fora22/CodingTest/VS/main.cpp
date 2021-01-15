@@ -2,26 +2,28 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <algorithm>
+
 
 using namespace std;
 
-vector<string> sliceArrayComposedString(string sLine) {
-	int previous = 0;
-	int current = 0;
-	vector<string> resultSliceString;
+int BinarySearch(vector<int> inputArray, const int arraySize, const int findData) {
+	int middleIndex;
+	int startIndex = 0;
+	int endIndex = arraySize - 1;
 
-	current = sLine.find(" ");
-	while (current != string::npos) {
-		string substring = sLine.substr(previous, current - previous);
-		resultSliceString.push_back(substring);
-		previous = current + 1;
-		current = sLine.find(" ", previous);
+	while (endIndex - startIndex >= 0) {
+		middleIndex = (startIndex + endIndex) / 2;
+		if (inputArray[middleIndex] == findData) {
+			return middleIndex;
+		}
+
+		if (inputArray[middleIndex] < findData) {
+			startIndex = middleIndex + 1;
+		} else {
+			endIndex = middleIndex - 1;
+		}
 	}
-	resultSliceString.push_back(sLine.substr(previous, current - previous));
-	// slice end
-
-	return resultSliceString;
+	return -1;
 }
 
 vector<int> sliceArrayComposedInt(string sLine) {
@@ -31,7 +33,7 @@ vector<int> sliceArrayComposedInt(string sLine) {
 
 	current = sLine.find(" ");
 	while (current != string::npos) {
-		string substring = sLine.substr(previous,	current - previous);
+		string substring = sLine.substr(previous, current - previous);
 		resultSliceString.push_back(stoi(substring));
 		previous = current + 1;
 		current = sLine.find(" ", previous);
@@ -42,48 +44,30 @@ vector<int> sliceArrayComposedInt(string sLine) {
 	return resultSliceString;
 }
 
-
-int solve(ifstream* readFile) {
+vector<int> solve(ifstream* readFile) {
+	vector<int> result;
+	int N, M;
 	string getInfo;
-	vector<string>* nk = new vector<string>;
-	int n, k;
+	vector<int> allParts, orderParts;
+
 	if ((*readFile).is_open()) {
 		getline(*readFile, getInfo);
-		*nk = sliceArrayComposedString(getInfo);
+		N = stoi(getInfo);
+
+		getline(*readFile, getInfo);
+		allParts = sliceArrayComposedInt(getInfo);
+
+		getline(*readFile, getInfo);
+		M = stoi(getInfo);
+
+		getline(*readFile, getInfo);
+		orderParts = sliceArrayComposedInt(getInfo);
 	}
-	n = stoi((*nk)[0]);
-	k = stoi((*nk)[1]);
-	delete nk;
-
-	// Get Array
-	getline(*readFile, getInfo);
-	vector<int> arrayA = sliceArrayComposedInt(getInfo);
-	getline(*readFile, getInfo);
-	vector<int> arrayB = sliceArrayComposedInt(getInfo);
-
-	int min, max;
-	vector<int>::iterator it;
-	// Get Minimum Data in arrayA
-	for (int i = 0; i < k; i++) {
-		min = *min_element(arrayA.begin(), arrayA.end());
-		max = *max_element(arrayB.begin(), arrayB.end());
-
-		// remove() function can't delete vector size.
-		// size still exist, it just overwirte data from delete data
-		// So, if you want delete data & size, you should use erase() function too.
-		//arrayA.erase(remove(arrayA.begin(), arrayA.end(), min));
-		//arrayB.erase(remove(arrayB.begin(), arrayB.end(), max));
-
-		it = find(arrayA.begin(), arrayA.end(), min);
-		*it = max;
-		it = find(arrayB.begin(), arrayB.end(), max);
-		*it = min;
+	
+	for (int i = 0; i < orderParts.size(); i++) {
+		result.push_back(BinarySearch(allParts, allParts.size(), orderParts[i]));
 	}
 
-	int result = 0;
-	for (int i = 0; i < n; i++) {
-		result = result + arrayA[i];
-	}
 
 	return result;
 }
@@ -92,7 +76,16 @@ int main(void) {
 
 	ifstream readfile("input.txt");
 	
-	cout << solve(&readfile);
+	vector<int> solveProblem = solve(&readfile);
+	vector<bool> isPartsHere(solveProblem.size());
+
+	for (int i = 0; i < solveProblem.size(); i++) {
+		if (solveProblem[i] >= 0) {
+			cout << "yes ";
+		} else {
+			cout << "no ";
+		}
+	}
 
 	return 0;
 }
