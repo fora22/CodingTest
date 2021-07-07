@@ -1,20 +1,31 @@
 import java.util.*;
 class CodingTest11_5{
     public static void main(String[] args){
-        int N = 8;
-        int M = 5;
+        int N = 5;
+        int M = 8;
         int[] K = {1, 5, 4, 3, 2, 4, 5, 2};
-        int result = 0;
+        int temp = 0;
         Arrays.sort(K);
-        int temp;
-        for(int j = 0; j < N-1; j++){
-            temp = K[j];
-            for(int i = j+1; i < N; i++){
-                if(temp != K[i]){
-                    result++;
+        int result = factorial(M)/(factorial(M-2)*2);
+        for(int i = 1; i < M; i++){
+            if(K[i-1] == K[i]){
+                temp += 1;
+            }
+            if(i == M-1 || K[i-1] != K[i]) {
+                if(temp != 0){
+                    result = result - factorial(temp);
+                    temp = 0;
                 }
             }
         }
         System.out.println(result);
+    }
+
+    public static int factorial(int x){
+        int result = 1;
+        for(int i = 1; i <= x; i++){
+            result = result*i;
+        }
+        return result;
     }
 }
