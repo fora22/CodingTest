@@ -1,81 +1,89 @@
-import os, sys
-dirName = os.getcwd()
-sys.stdin = open(dirName + "\\input.txt", 'r')
+# import os, sys
+# dirName = os.getcwd()
+# sys.stdin = open(dirName + "\\input.txt", 'r')
 
+import sys
+sys.stdin = open("input.txt", 'r')
 
 N = int(input())
+
 K = int(input())
-applePoint = []
+
+apple = []
 for i in range(K):
-    applePoint.append(list(map(int,input().split())))
+    aX, aY = map(int, input().split())
+    apple.append([aX, aY])
+
 L = int(input())
 
-movement = []
+movement = [] # x, c
 for i in range(L):
-    movement.append(input().split())
+    t, d = input().split()
+    movement.append([int(t), d])
 
-snakeMap = [[0 for x in range(N)] for x in range(N)]
+class snakeGame():
+    def __init__(self):
+        self.dX = [0, 1, 0, -1]  # E, S, W, N
+        self.dY = [1, 0, -1, 0]  # E, S, W, N
 
-for i in range(K):
-    snakeMap[applePoint[i][0]][applePoint[i][1]] = 1
-
-snake_head = [0, 0]
-snake_tail = [0, 0]
-
-snakeMap[snake_head[0]][snake_head[1]] = 2
-timeCount = 1
-
-allDirection = [
-    [0, 1],     # Right
-    [-1, 0],     # Up
-    [0, -1],    # Left
-    [1, 0]     # Down
-]
-direction = allDirection[0]
-direction.append(0)     # Direction Index Number
-
-print(snakeMap)
-print(applePoint)
-print(movement)
-
-
-for x, c in movement:
-    if (snake_head[0] >= N) or (snake_head[1] >= N) or (snake_head[0] < 0) or (snake_head[1] < 0):
-        break
-    
-    for i in range(int(x)):
-        snake_head[0] += direction[0]
-        snake_head[1] += direction[1]
-        if (snake_head[0] >= N) or (snake_head[1] >= N) or (snake_head[0] < 0) or (snake_head[1] < 0):
-            break
-
-        if snakeMap[snake_head[0]][snake_head[1]] == 1:
-            snakeMap[snake_head[0]][snake_head[1]] = 0
-        elif snakeMap[snake_head[0]][snake_head[1]] == 2:
-            break
+    def turn(dIndex, c):
+        if c == "L":
+            dIndex = (dIndex - 1) % 4
         else:
-            snakeMap[snake_head[0]][snake_head[1]] = 0
-            snake_tail[0] += direction[0]
-            snake_tail[1] += direction[1]
+            dIndex = (dIndex + 1) % 4
+        return dIndex
+
+
+    def delTail(q):
+        q.pop(0)
+        return q
         
-        snakeMap[snake_head[0]][snake_head[1]] = 2
-        timeCount += 1
+    def gameStart(headX, headY, direc):
+        timeCount = 1
+        snakeWay = [[1,1]]   
+        for x, c in movement:       
+            timeCount, direc, snakeWay = snakeMove(x, c, snakeWay, headX, headY, direc, timeCount)
         
-    if c == "L":
-        if direction[2] == 3:
-            direction = allDirection[0]
-            direction.append(0)
-        else:
-            direction[2] += 1
-            direction[0] = allDirection[direction[2]][0] 
-            direction[1] = allDirection[direction[2]][1]
-    else:
-        if direction[2] == 0:
-            direction = allDirection[3]
-            direction.append(3)
-        else:
-            direction[2] -= 1
-            direction[0] = allDirection[direction[2]][0] 
-            direction[1] = allDirection[direction[2]][1]
+        timeCount, direc, snakeWay = snakeMove(x, c, snakeWay, headX, headY, direc, timeCount)
+        
+        return timeCount
 
-print(timeCount)
+    def snakeMove(x_, c_, snakeWay_, head_X, head_Y, direction, timeCount_):
+        while True:
+            head_X += dX[direction]
+            head_Y += dY[direction]
+
+            if (head_X > N) or (head_Y > N) or (head_X < 1) or (head_Y < 1):
+                return timeCount_, direction, snakeWay_
+            
+            if ([head_X, head_Y] in apple):
+                apple.remove([head_X, head_Y])
+            elif ([head_X, head_Y] in snakeWay_):
+                return timeCount_, direction, snakeWay_
+            else:
+                snakeWay_ = delTail(snakeWay_)
+
+            snakeWay_.append([head_X, head_Y])
+
+            
+            # if snakeMap[head_X][head_Y] == 1:
+            #     snakeMap[head_X][head_Y] = 0
+            # elif snakeMap[head_X][head_Y] == 2:
+            #     break
+            # else:
+            #     snakeMap[tail_X][tail_Y] = 0
+            #     tail_X += dX[direction]
+            #     tail_Y += dY[direction]
+            
+            # snakeMap[head_X][head_Y] = 2
+            
+            timeCount_ += 1
+
+            if timeCount_ == x_:
+                direction = turn(direction, c_)
+                break
+        return timeCount_, direction, snakeWay_
+
+
+initX, initY, initDriection = 1, 1, 0  # start position, direction
+print(gameStart(initX, initY, initDriection ))
