@@ -1,81 +1,81 @@
-import os, sys
-dirName = os.getcwd()
-sys.stdin = open(dirName + "\\input.txt", 'r')
-
+import sys
+sys.stdin = open("input.txt", 'r')
 
 N = int(input())
+
 K = int(input())
-applePoint = []
+
+apple = []
 for i in range(K):
-    applePoint.append(list(map(int,input().split())))
+    aX, aY = map(int, input().split())
+    apple.append([aX, aY])
+
 L = int(input())
 
-movement = []
+movement = [] # x, c
 for i in range(L):
-    movement.append(input().split())
+    t, d = input().split()
+    movement.append([int(t), d])
 
-snakeMap = [[0 for x in range(N)] for x in range(N)]
-
-for i in range(K):
-    snakeMap[applePoint[i][0]][applePoint[i][1]] = 1
-
-snake_head = [0, 0]
-snake_tail = [0, 0]
-
-snakeMap[snake_head[0]][snake_head[1]] = 2
-timeCount = 1
-
-allDirection = [
-    [0, 1],     # Right
-    [-1, 0],     # Up
-    [0, -1],    # Left
-    [1, 0]     # Down
-]
-direction = allDirection[0]
-direction.append(0)     # Direction Index Number
-
-print(snakeMap)
-print(applePoint)
-print(movement)
-
-
-for x, c in movement:
-    if (snake_head[0] >= N) or (snake_head[1] >= N) or (snake_head[0] < 0) or (snake_head[1] < 0):
-        break
-    
-    for i in range(int(x)):
-        snake_head[0] += direction[0]
-        snake_head[1] += direction[1]
-        if (snake_head[0] >= N) or (snake_head[1] >= N) or (snake_head[0] < 0) or (snake_head[1] < 0):
-            break
-
-        if snakeMap[snake_head[0]][snake_head[1]] == 1:
-            snakeMap[snake_head[0]][snake_head[1]] = 0
-        elif snakeMap[snake_head[0]][snake_head[1]] == 2:
-            break
-        else:
-            snakeMap[snake_head[0]][snake_head[1]] = 0
-            snake_tail[0] += direction[0]
-            snake_tail[1] += direction[1]
-        
-        snakeMap[snake_head[0]][snake_head[1]] = 2
-        timeCount += 1
-        
+dX = [0, 1, 0, -1]  # E, S, W, N
+dY = [1, 0, -1, 0]  # E, S, W, N
+direction = 0
+def turn(dIndex, c):
     if c == "L":
-        if direction[2] == 3:
-            direction = allDirection[0]
-            direction.append(0)
-        else:
-            direction[2] += 1
-            direction[0] = allDirection[direction[2]][0] 
-            direction[1] = allDirection[direction[2]][1]
+        dIndex = (dIndex - 1) % 4
     else:
-        if direction[2] == 0:
-            direction = allDirection[3]
-            direction.append(3)
-        else:
-            direction[2] -= 1
-            direction[0] = allDirection[direction[2]][0] 
-            direction[1] = allDirection[direction[2]][1]
+        dIndex = (dIndex + 1) % 4
+    return dIndex
+
+mapX = 0
+mapY = 1
+
+timeCount = 0
+snake = [[1,1]]
+
+# check
+
+def check(time):
+    snakeMap = [[0 for _ in range(N + 1)] for i in range(N + 1)]
+    for ap in apple:
+        
+        snakeMap[ap[0]][ap[1]] = 1
+    for sn in snake:
+        snakeMap[sn[0]][sn[1]] = 2
+    print(time)
+    for sm in snakeMap:
+        print(sm)
+    print()
+# game start
+
+moveIndex = 0
+x = movement[moveIndex][0]
+c = movement[moveIndex][1]
+movement.append([0, "D"])
+while True:
+    
+    headX = snake[-1][mapX] + dX[direction]
+    headY = snake[-1][mapY] + dY[direction]
+    
+    timeCount += 1
+
+    if ([headX, headY] in apple):
+        apple.remove([headX, headY])
+    elif ([headX, headY] in snake):
+        break
+    else:
+        snake.pop(0)
+
+    snake.append([headX, headY])
+
+    if (headX > N) or (headY > N) or (headX < 1) or (headY < 1):
+        break
+    check(timeCount)
+    if timeCount == x:
+        direction = turn(direction, c)
+        moveIndex += 1
+        x = movement[moveIndex][0]
+        c = movement[moveIndex][1]
 
 print(timeCount)
+# check(timeCount)
