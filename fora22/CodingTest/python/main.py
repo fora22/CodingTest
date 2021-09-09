@@ -1,81 +1,31 @@
+import os
 import sys
-sys.stdin = open("input.txt", 'r')
+dirName = os.path.dirname(os.path.abspath(__file__))
+sys.stdin = open(os.path.abspath(dirName + "/input.txt"), 'r')
 
 N = int(input())
+numbers = list(map(int, input().split()))
+operations = list(map(int, input().split()))  # plus, minus, multiply, divide
 
-K = int(input())
+maxNum = -10**9
+minNum = 10**9
 
-apple = []
-for i in range(K):
-    aX, aY = map(int, input().split())
-    apple.append([aX, aY])
+def dfs(num, depth, pl, mi, mu, di):
+    global maxNum, minNum
+    if depth == N:
+        maxNum = max(num, maxNum)
+        minNum = min(num, minNum)
+        return
 
-L = int(input())
+    if pl > 0:
+        dfs(num + numbers[depth], depth + 1, pl - 1, mi, mu, di)
+    if mi > 0:
+        dfs(num - numbers[depth], depth + 1, pl, mi - 1, mu, di)
+    if mu > 0:
+        dfs(num * numbers[depth], depth + 1, pl, mi, mu - 1, di)
+    if di > 0:
+        dfs(num / numbers[depth], depth + 1, pl, mi, mu, di - 1)
 
-movement = [] # x, c
-for i in range(L):
-    t, d = input().split()
-    movement.append([int(t), d])
-
-dX = [0, 1, 0, -1]  # E, S, W, N
-dY = [1, 0, -1, 0]  # E, S, W, N
-direction = 0
-def turn(dIndex, c):
-    if c == "L":
-        dIndex = (dIndex - 1) % 4
-    else:
-        dIndex = (dIndex + 1) % 4
-    return dIndex
-
-mapX = 0
-mapY = 1
-
-timeCount = 0
-snake = [[1,1]]
-
-# check
-
-def check(time):
-    snakeMap = [[0 for _ in range(N + 1)] for i in range(N + 1)]
-    for ap in apple:
-        
-        snakeMap[ap[0]][ap[1]] = 1
-    for sn in snake:
-        snakeMap[sn[0]][sn[1]] = 2
-    print(time)
-    for sm in snakeMap:
-        print(sm)
-    print()
-# game start
-
-moveIndex = 0
-x = movement[moveIndex][0]
-c = movement[moveIndex][1]
-movement.append([0, "D"])
-while True:
-    
-    headX = snake[-1][mapX] + dX[direction]
-    headY = snake[-1][mapY] + dY[direction]
-    
-    timeCount += 1
-
-    if ([headX, headY] in apple):
-        apple.remove([headX, headY])
-    elif ([headX, headY] in snake):
-        break
-    else:
-        snake.pop(0)
-
-    snake.append([headX, headY])
-
-    if (headX > N) or (headY > N) or (headX < 1) or (headY < 1):
-        break
-    check(timeCount)
-    if timeCount == x:
-        direction = turn(direction, c)
-        moveIndex += 1
-        x = movement[moveIndex][0]
-        c = movement[moveIndex][1]
-
-print(timeCount)
-# check(timeCount)
+dfs(numbers[0], 1, operations[0], operations[1], operations[2], operations[3])
+print(maxNum)
+print(minNum)
