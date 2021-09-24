@@ -21,6 +21,3 @@ for i in range(1, lenCards):
         count += cards[i]
 
 print(count)
-
-
-
