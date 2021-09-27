@@ -13,7 +13,7 @@ print(stages)
 import copy
 testStages = copy.deepcopy(stages)
 
-for st in range(1, max(stages) + 1):
+for st in range(1, N + 1):
     countStages = testStages.count(st)
     lenS = len(testStages)
     fail = countStages / lenS
