@@ -7,15 +7,14 @@ sys.stdin = open(os.path.abspath(dirName + "/input.txt"), 'r')
 N = int(input())
 stages = list(map(int, input().split()))
 stages.sort()
-print(stages)
 
 
-import copy
-testStages = copy.deepcopy(stages)
-
+fail = {}
+lenS = len(stages)
 for st in range(1, N + 1):
-    countStages = testStages.count(st)
-    lenS = len(testStages)
-    fail = countStages / lenS
-    testStages.remove(st)
-    print(testStages)    
+    countStages = stages.count(st)
+    fail[st] = countStages / lenS
+    lenS -= countStages
+failure = sorted(fail, key=lambda x : fail[x], reverse=True)
+print(failure)
+print(fail)
