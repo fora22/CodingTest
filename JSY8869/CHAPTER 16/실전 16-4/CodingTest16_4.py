@@ -1,11 +1,9 @@
 def main(N,Combat_Power):
     if int(Combat_Power[0]) > int(Combat_Power[1]):
         for i in range(1, N-1):
-                if int(Combat_Power[i]) > int(Combat_Power[i+1]) and int(Combat_Power[i-1]) > int(Combat_Power[i]):
-                    pass
-                else:
+                if int(Combat_Power[i]) < int(Combat_Power[i+1]) or int(Combat_Power[i-1]) < int(Combat_Power[i]):
                     Combat_Power.remove(Combat_Power[i])
-                    return main(N-1, Combat_Power)
+                    return main(N-1, Combat_Power)                    
     return N
 
 
