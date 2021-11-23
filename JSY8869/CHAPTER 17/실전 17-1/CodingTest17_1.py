@@ -8,7 +8,7 @@ def floyd(n, graph):
   for i in range(1, 1 + n):
     for j in range(1, 1 + n):
       if graph[a][b] == INF:
-        print("INF", end=" ") 
+        print(0, end=" ") 
       else:
         print(graph[i][j], end=" ")
   return (graph)
