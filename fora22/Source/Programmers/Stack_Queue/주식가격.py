@@ -13,11 +13,14 @@ def solution(prices):
         if price <= min_price:
             answer.append(len(p))
         else:
-            temp = p.index(min_price) + 1
+            for idx, pr in enumerate(p):
+                if price > pr:
+                    temp = idx + 1
+                    break
             answer.append(temp)
 
     return answer
 
-p = [1, 2, 3, 2, 3]
+p = [1, 2, 3,4, 3, 2, 3]
 
 print(solution(p))
