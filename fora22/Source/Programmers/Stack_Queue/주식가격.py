@@ -1,23 +1,22 @@
-from collections import deque
+'''
+Stack
+참고
+https://deftkang.tistory.com/175
+'''
 
 def solution(prices):
-    answer = []
+    answer = [0]*len(prices)
     
-    p = deque(prices)
-    while len(p) != 0:
-        price = p.popleft()
-        if len(p) == 0:
-            answer.append(0)
-            break
-        min_price = min(p)
-        if price <= min_price:
-            answer.append(len(p))
-        else:
-            for idx, pr in enumerate(p):
-                if price > pr:
-                    temp = idx + 1
-                    break
-            answer.append(temp)
+    s = []
+    for i, p in enumerate(prices):
+        while s and prices[s[-1]] > p:
+            j = s.pop()
+            answer[j] = i-j            
+        s.append(i)
+    
+    while s:
+        i = s.pop()
+        answer[i] = len(prices)-1-i
 
     return answer
 
