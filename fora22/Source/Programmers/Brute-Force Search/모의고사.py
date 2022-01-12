@@ -1,3 +1,6 @@
+'''
+Brute Force (완전 탐색)
+'''
 from collections import deque
 import math as m
 import numpy as np

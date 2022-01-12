@@ -1,3 +1,6 @@
+'''
+Brute Force (완전 탐색)
+'''
 from itertools import permutations as permu
 
 def is_prime(n: int) -> bool:

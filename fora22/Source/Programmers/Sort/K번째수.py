@@ -1,3 +1,6 @@
+'''
+Sort
+'''
 def solution(array, commands):
     answer = [0] * len(commands)
 
