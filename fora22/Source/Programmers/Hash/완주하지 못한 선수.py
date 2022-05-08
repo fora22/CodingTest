@@ -27,6 +27,16 @@ def solution(participant, completion):
     answer = dict_p[sumHash]
     return answer
 
+from collections import Counter
+
+def solution3(participant, completion):
+
+    every_runner = collections.Counter(participant)
+    run_over = collections.Counter(completion)
+    every_runner.subtract(run_over)
+    return next(every_runner.elements())
+
+
 
 if __name__ == "__main__":
     p = [
@@ -40,5 +50,5 @@ if __name__ == "__main__":
         ["stanko", "ana", "mislav"]
         ]
 
-    result = solution(p[0], c[0])
+    result = solution3(p[0], c[0])
     print(result)

@@ -13,8 +13,9 @@ def solution(numbers):
     answer = str(int(''.join(numbers)))
     return answer
 
-n = [[6, 10, 2], [3, 30, 34, 5, 9]]
 
-for i in range(2):
+n = [[6, 10, 2], [3, 30, 34, 5, 9], [666,667,660,656]]
+
+for i in range(3):
     print(solution(n[i]))
     # break
